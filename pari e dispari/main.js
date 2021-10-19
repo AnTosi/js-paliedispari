@@ -17,41 +17,99 @@ console.log(userChoice);
 let userNumber = prompt("Digita un numero da 1 a 5");
 console.log(userNumber);
 
+
+// questa è la funzione per il numero random vista a lezione, presa da w3school
+
+/**
+ * funzione w3school per numeri interi random che includono max e min nell'intervallo
+ * @param {number} min il valore minimo dell'intervallo
+ * @param {number} max il valore massimo dell'intervallo
+ * @returns {number} numero random tra min e max (inclusi)
+ */
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
+
+//invoco la funzione appena scritta per generare il valore richiesto e lo "salvo" in una variabile
 let pcNumber = getRndInteger(1, 5);
 console.log(pcNumber);
 
+//parseInt per fargli fare il calcolo, altrimenti me li scrive accanto
 result = parseInt(userNumber) + parseInt(pcNumber);
 console.log(result);
 
-function isEven (result) {
-    if (result % 2 == 0) {
+
+/**
+ * funzione per verificare se il numero dato è pari o dispari
+ * @param {number} numerodaverificare numero di cui vogliamo sapere se è pari o dispari
+ * @returns {boolean} true se pari, false se dispari
+ */
+function isEven (number) {
+    if (number % 2 == 0) {
         return true
     } else {
         return false
     }
 }
 
-if (userChoice == "pari" && isEven (result)) {
-    console.log(`Il risultato è ${result}, hai scelto pari, hai vinto!`);
-    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai vinto!`;
 
-} else if (userChoice == "pari" ){
-    console.log(`Il risultato è ${result}, hai scelto pari, hai perso...`);
-    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai perso...`;
 
-} else if (userChoice == "dispari" && isEven (result)) {
-    console.log(`Il risultato è ${result}, hai scelto dispari, hai perso`);
-    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai perso`;
+// questa serie di if è per verificare il risultato con quanto detto dall'utente, forse posso semplificarlo con una funzione, ora provo
 
-} else {
-    console.log(`Il risultato è ${result}, hai scelto dispari, hai vinto!`);
-    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai vinto!`;
+// if (userChoice == "pari" && isEven (result)) {
+//     console.log(`Il risultato è ${result}, hai scelto pari, hai vinto!`);
+//     document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai vinto!`;
+
+// } else if (userChoice == "pari"){
+//     console.log(`Il risultato è ${result}, hai scelto pari, hai perso...`);
+//     document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai perso...`;
+
+// } else if (userChoice == "dispari" && isEven (result)) {
+//     console.log(`Il risultato è ${result}, hai scelto dispari, hai perso`);
+//     document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai perso`;
+
+// } else {
+//     console.log(`Il risultato è ${result}, hai scelto dispari, hai vinto!`);
+//     document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai vinto!`;
+
+// }
+
+// il codice funziona, ora stampo a schermo quello che mi dava la console log
+
+
+// qua cerco di generalizzare quanto fatto sopra dentro una funzione
+// ci sono riuscito
+
+
+/**
+ * Questa funzione confronta la scelta tra pari o dispari dell'utente e il numero inserito, stampando a schermo l'esito
+ * 
+ * @param {string} choice qua scelta tra pari o dispari
+ * @param {number} number qua il numero che vogliamo inserire
+ * @returns esito stampato a schermo e in console.log
+ */
+function pariOdispari (choice, number) {
+    if (choice == "pari" && isEven (number)) {
+        console.log(`Il risultato è ${number}, hai scelto pari, hai vinto!`);
+        document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto pari, hai vinto!`;
+
+    } else if (choice == "pari" && !isEven (number)) {
+        console.log(`Il risultato è ${number}, hai scelto pari, hai perso...`);
+        document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto pari, hai perso...`;
+
+    } else if (choice == "dispari" && !isEven(number)) {
+        console.log(`Il risultato è ${number}, hai scelto dispari, hai vinto!`);
+        document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto dispari, hai vinto!`;
+    
+    } else {
+        console.log(`Il risultato è ${number}, hai scelto dispari, hai perso`);
+        document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto dispari, hai perso`;
+    }
+
 
 }
 
 
-// il codice funziona, ora stampo a schermo quello che mi dava la console log
+//invoco la funzione usando le mie variabili ottenute dal prompt e dalla somma del numero scelto dall'utente e random del PC 
+pariOdispari (userChoice, result);
