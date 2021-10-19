@@ -4,10 +4,11 @@
 //toLowerCase() serve per rendere meno rigoroso il prompt, così anche se l'utente usa caps me lo legge
 //function con la funzione random vista a lezione presa da w3school
 //altra function per verificare se la somma è pari o dispari
-// parseInt per fare la somma (sarebbe andato bene anche Number)
+//parseInt per fare la somma (sarebbe andato bene anche Number)
 //stampo in console ad ogni passaggio i risultati per accertarmi che stia facendo bene, e in caso contrario trovare dove è l'errore
 //alla fine if, else if, else if, else per vedere i 4 casi, probabile che ci sia un sistema più semplice ma questo funziona, se mi viene in mente qualcosa di più efficiente modifico poi
-
+//potrei usare addeventlistener collegato ad un bottone per inizializzare il tutto e poterlo ripetere,
+//ma lo abbiamo già visto in altri esercizi e preferisco concentrarmi sul JS e sulle funzioni
 
 
 
@@ -102,9 +103,12 @@ function pariOdispari (choice, number) {
         console.log(`Il risultato è ${number}, hai scelto dispari, hai vinto!`);
         document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto dispari, hai vinto!`;
     
-    } else {
+    } else if (choice == "dispari" && isEven(number)) {
         console.log(`Il risultato è ${number}, hai scelto dispari, hai perso`);
         document.querySelector("h1").innerHTML = `Il risultato è ${number}, hai scelto dispari, hai perso`;
+    } else {
+        console.log(`INVALID`);
+        document.querySelector("h1").innerHTML = `Hai inserito un input non valido`;
     }
 
 
@@ -113,3 +117,10 @@ function pariOdispari (choice, number) {
 
 //invoco la funzione usando le mie variabili ottenute dal prompt e dalla somma del numero scelto dall'utente e random del PC 
 pariOdispari (userChoice, result);
+
+
+
+
+// funziona tutto, ma se l'utente scrive cose a caso invece che pari o dispari risulta come dispari, provo a modificare
+
+//modificato l'ultimo else if e aggiunto un else, ora funziona
