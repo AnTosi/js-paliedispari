@@ -20,14 +20,19 @@ let userCharacters = userWord.split("");
 let reverseCharacters = reverseUserWord.split("");
 console.log(userCharacters, reverseCharacters);
 
-// let letters = userWord.split();
 
+
+// il problema era che per qualche motivo lo spread e il reverse mi invertivano pure l'ordinata dell'array di userWord per motivi ignoti, prbabilmente con qualche adeguamento anche gli altri metodi commentati successivamente potrebbero funzionare
+
+
+// let letters = userWord.split();
 // console.log(letters);
 
 
 
 
 //uso ciclo con charAt per creare array lettere
+// abbandonato questo metodo perché inefficiente, ci sono già metodi esistenti che fanno lo stesso
 
 // for (let i = 0; i < userWord.length; i++) {
 //     letter += userWord.charAt(i);
@@ -35,8 +40,9 @@ console.log(userCharacters, reverseCharacters);
 // }
 
 
-//provo con spread che avevo rimosso
+//provo con spread che avevo rimosso dalla memoria
 
+//inizialmente split non mi divideva le lettere, sicuramente sbagliavo un po' di sintassi
 // const characters = userWord.split("");
 // console.log(characters);
 
@@ -47,8 +53,13 @@ console.log(userCharacters, reverseCharacters);
 // let reverseCharacters = characters;
 // reverseCharacters.reverse();
 
+// qua ho notato il fatto che l'array mi veniva dato nell'ordine corretto ma con gli elementi con l'ordinata al contrario nel primo, e con l'ordine invertito e l'ordinata corretta nel secondo, così facendo risultavano sempre palindromi, quindi ho dovuto apportare l'accorgimento nel prompt per evitare questa situazione (e joinare e poi risplittare funziona)
+
 // console.log(reverseCharacters);
 // console.log(characters);
+
+
+//qua, come dicevo sopra, probabilmente funziona ora che non ho l'inghippo con i due array
 
 // function palindrome (array1, array2) {
 //     if (array1 == array2) {
@@ -64,21 +75,30 @@ console.log(userCharacters, reverseCharacters);
 
 
 // boh, non capisco perché con il reverse == non funziona, forse non gli interessa l'ordine ma solo quali elementi ci sono (mi dà sempre palindromo), riprovo con il ciclo
+// credo che non sia quello scritto qua il motivo, ovvero che l'ordine conta ma per qualche strano motivo lo invertiva
 
-function palindrome (array1, array2) {
+
+/**
+ * Questa funzione controlla se la parola 1 è uguale alla parola 2
+ * @param {array1} parola1 array di stringhe, ogni stringa è una lettera della parola
+ * @param {array2} parola2 array di stringhe, ogni stringa è una lettera della parola
+ * @returns {boolean} true se uguali, false se diverse
+ */
+
+function equalWords (array1, array2) {
     if (array1.length !== array2.length) {
-        document.querySelector
+        return false
     }
        else for (let i = 0; i < array1.length; i++) {
         if (array1[i] !== array2[i]) {
-
+        return false
 
     } else return true
 }
 }
 
 
-if (palindrome (userCharacters, reverseCharacters)) {
+if (equalWords (userCharacters, reverseCharacters)) {
     document.querySelector("h1").innerHTML = "La parola che hai scelto è palindroma!"
 } else {
     document.querySelector("h1").innerHTML = "La parola che hai scelto non è palindroma :("
