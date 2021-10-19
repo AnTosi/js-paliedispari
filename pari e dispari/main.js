@@ -37,15 +37,19 @@ function isEven (result) {
 
 if (userChoice == "pari" && isEven (result)) {
     console.log(`Il risultato è ${result}, hai scelto pari, hai vinto!`);
+    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai vinto!`;
 
 } else if (userChoice == "pari" ){
     console.log(`Il risultato è ${result}, hai scelto pari, hai perso...`);
+    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto pari, hai perso...`;
 
 } else if (userChoice == "dispari" && isEven (result)) {
     console.log(`Il risultato è ${result}, hai scelto dispari, hai perso`);
+    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai perso`;
 
 } else {
     console.log(`Il risultato è ${result}, hai scelto dispari, hai vinto!`);
+    document.querySelector("h1").innerHTML = `Il risultato è ${result}, hai scelto dispari, hai vinto!`;
 
 }
 
