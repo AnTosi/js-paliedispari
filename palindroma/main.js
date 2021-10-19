@@ -35,4 +35,6 @@ console.log(letter);
 
 //funziona, ora come dicevo sopra provo a fare reverse (non mi ricordo di preciso qual è, ma sono abbastanza sicuro di aver visto una funzione che lo faccia)
 
+//comunque ho avuto una mezzoretta di pausa forzata perché il gatto mi era salito in collo bloccandomi entrambe le braccia
+
 
